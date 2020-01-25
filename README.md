@@ -39,15 +39,20 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    1.) express is a framework that sits on top of node.  Its main features are routers to build a modular api and its built in middleware stack.
 
 - [ ] Describe Middleware?
+    2.) Middleware is a function that runs before another function to check for certain criteria before allowing the other function to continue.
 
 - [ ] Describe a Resource?
+    3.)  A resource is something you can use to retrieve or store data.
 
 - [ ] What can the API return to help clients know if a request was successful?
+    4.) a response status
 
 - [ ] How can we partition our application into sub-applications?
-
+    5.)  using express router to sub uri endpoints with separate modal files and router files. 
+    
 ## Minimum Viable Product
 
 - [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
