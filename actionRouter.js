@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const db = require('./data/helpers/actionModel')
+const projectDb = require('./data/helpers/projectModel')
 
 router.get('/:id', (req,res) => {
     db.get(req.params.id)
@@ -12,7 +13,7 @@ router.get('/:id', (req,res) => {
         })
 })
 
-router.post('/', (req,res) => {
+router.post('/', validateProjectId, (req,res) => {
     db.insert(req.body)
         .then(item => {
             res.status(201).json(item)
@@ -44,5 +45,15 @@ router.delete('/:id', (req,res) => {
             res.status(500).json({message: 'unable to delete action'})
         })
 })
+
+function validateProjectId(req,res,next) {
+    projectDb.get(req.body.project_id)
+        .then(item => {
+            item ?
+            next() :
+            res.status(404).json({message: 'project id could not be found'})
+        })
+
+}
 
 module.exports = router

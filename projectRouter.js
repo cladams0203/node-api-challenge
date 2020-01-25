@@ -45,4 +45,15 @@ router.delete('/:id', (req,res) => {
         })
 })
 
+router.get('/:id/actions', (req,res) => {
+    db.getProjectActions(req.params.id)
+        .then(item => {
+            res.status(200).json(item)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({message: 'unable to get project actions'})
+        })
+})
+
 module.exports = router
