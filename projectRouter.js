@@ -1,6 +1,17 @@
 const router = require('express').Router()
 const db = require('./data/helpers/projectModel')
 
+router.get('/', (req,res) => {
+    db.getAll()
+        .then(item => {
+            res.status(200).json(item)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({message: 'unable to get all projects'})
+        })
+})
+
 router.get('/:id', (req,res) => {
     db.get(req.params.id)
         .then(item => {
